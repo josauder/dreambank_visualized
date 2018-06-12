@@ -1,0 +1,227 @@
+.graph-svg-component {
+    background-color: black;
+}
+.sidebyside {
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+
+body {
+  background-color: black;
+  margin: 0px;
+}
+
+div {
+  /*background-color: black;*/
+}
+
+input[type=checkbox] {
+  transform: scale(1.2);
+}
+
+.cpicker {
+  margin: 2px;
+  width: 17px;
+  height: 17px;
+  border: 1px solid black;
+}
+
+.graphic {
+  float: left;
+}
+
+p {
+  margin: 0px;
+  color: black;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#seriesDiv {
+  height: 200px;
+  overflow-y: auto;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.white {
+  margin-top: 5px;
+  margin-left: 0;
+  margin-right: 0;
+  color: white;
+}
+
+ul {
+  margin: 0;
+  display: inline-block;
+  padding: 0;
+  list-style: none;
+  width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 1px solid white;
+}
+
+.svgText {
+    pointer-events: none;
+}
+
+li {
+  border: 1px solid black;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+li > * {
+  float: left;
+}
+
+.bottomBar {
+  left: 0;
+  height: 0;
+  float: left;
+  background-color: transparent;
+  position:absolute;
+  bottom: 0;
+  color: transparent;
+}
+
+.bottomBar > * {
+  margin-left: 3px;
+}
+
+.leftBottomDisplayContainer {
+  width: 70%;
+  float: left;
+  overflow-y: auto;
+  background-color: transparent;
+  max-height: 200px;
+
+}
+.leftBottomDisplay {
+}
+
+.rightBottomDisplayContainer {
+  background-color: transparent;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.rightBottomDisplay {
+}
+
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: #DDD;
+}
+
+/* mouse over link */
+a:hover {
+    color: #AAA;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+hr {
+  color: white;
+}
+
+.sidebar {
+  height: 100%;
+  width:250px;
+  border-left: 1px solid white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: auto;
+     /* if you don't want #second to wrap below #first */
+}
+.sidebar > * {
+  margin-left: 10px;
+}
+
+rect.selection {
+  cursor: move !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  stroke: #545454;
+  stroke-width: 2px;
+  stroke-opacity: 1;
+  fill: white;
+  fill-opacity: 0.5;
+}
+
+/* The switch - the box around the slider */
+.switch {
+ position: relative;
+ display: inline-block;
+ width: 56px;
+ height: 28px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+ position: absolute;
+ cursor: pointer;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: #AAA;
+ -webkit-transition: .4s;
+ transition: .4s;
+}
+
+.slider:before {
+ position: absolute;
+ content: "";
+ height: 20px;
+ width: 20px;
+ left: 4px;
+ bottom: 4px;
+ background-color: #FFF;
+ -webkit-transition: .4s;
+ transition: .4s;
+}
+
+input:checked + .slider {
+ background-color: #DDDDDD;
+}
+
+input:focus + .slider {
+ box-shadow: 0 0 1px #DDDDDD;
+}
+
+input:checked + .slider:before {
+ -webkit-transform: translateX(26px);
+ -ms-transform: translateX(26px);
+ transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+ border-radius: 34px;
+}
+
+.slider.round:before {
+ border-radius: 50%;
+}

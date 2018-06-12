@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/project.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98286601-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-98286601-2');
+  </script>
+
+  <meta charset="utf-8">
+  <meta property="og:title" content="DreamBank Visualized">
+  <meta property="og:description" content="An interactive visualization of over 26,000 dream transcriptions" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://josauder.github.io/dreambank_visualized" />
+  <meta property="og:image" content="http://josauder.github.io/dreambank_visualized/image/image.png"/>
+
+  <title>DreamBank Visualized</title>
+  <link rel="icon"
+      type="image/png"
+      href="image/image.png">
+
+
+  <script src="https://d3js.org/d3-color.v1.min.js"></script>
+  <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+  <script src="https://d3js.org/d3-ease.v1.min.js"></script>
+  <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+  <script src="https://d3js.org/d3-selection.v1.min.js"></script>
+  <script src="https://d3js.org/d3-timer.v1.min.js"></script>
+  <script src="https://d3js.org/d3-transition.v1.min.js"></script>
+  <script src="https://d3js.org/d3-drag.v1.min.js"></script>
+  <script src="https://d3js.org/d3-zoom.v1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-plain.css" />
+  <link rel="stylesheet" type="text/css" href="js/small-color-picker-build-v1/css/small-color-picker.min.css"/>
+  <link rel="stylesheet" type="text/css" href="js/small-color-picker-build-v1/css/color-buttons.min.css"/>
+
+  <script src="js/small-color-picker-build-v1/js/small-color-picker.min.js"></script>
+  <script type="text/javascript" src="js/d3/d3.js"></script>
+  <script>
+    var zoom = d3.zoom();
+  </script>
+</head>
+<body onresize="resize()">
+  <div class="screen">
+    <div class="graphic">
+    </div>
+    <div class="bottomBar">
+      <div class="leftBottomDisplayContainer">
+        <p class="leftBottomDisplay"></p>
+      </div>
+      <div class="rightBottomDisplayContainer">
+        <p class="rightBottomDisplay"></p>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div id="share"></div>
+    <p class="white">
+      <b>DreamBank Visualized</b><br>
+      <a href="http://www.dreambank.net" target="_blank">DreamBank</a><br>
+      <a href="dreambank_visualized_technical_report.pdf" target="_blank">About</a><br>
+      <a href="contact.html" target="_blank">Contact</a>
+    </p>
+    <hr>
+    <p class="white">Dream Series (# of Dreams)</p>
+    <div id="seriesDiv">
+      <ul id="series">
+      </ul>
+    </div>
+    <p class="white">Projection</p>
+    <select id="projectionMode" style="width:120px">
+      <option value="tsne" selected>T-SNE</option>
+      <option value="classifier">Classifier (Gender)</option>
+      <option value="autoencoder">Autoencoder</option>
+      <option value="date_sentiment">Date - Sentiment</option>
+    </select>
+    <p class="white">Color</p>
+    <select id="colorMode" style="width:120px">
+     <option value="gender">By Gender</option>
+     <option value="series" selected>By Series</option>
+     <option value="search">Search</option>
+   </select>
+   <div>
+     <p class="white">Search</p>
+     <input type="text" placeholder="Example:  dog|puppy" id="searchField" style="width:150px">
+     <button onclick="search()">Go</button>
+     <p class="white">Max Dreams per Series</p>
+     <input type="number" min="0" max="4000" value="200" id="nPerSeriesField" style="width:150px">
+     <button onclick="updateNPerSeries()">Go</button>
+     <p class="white">Summarize Area</p>
+     <label class="switch">
+      <input type="checkbox" onchange="toggleAnalyzer()" id="analyzeCheckbox">
+      <span class="slider"></span>
+    </label>
+   </div>
+
+  </div>
+
+
+  <script type="text/javascript" src="js/util.js"></script>
+  <script type="text/javascript" src="js/stopwords.js"></script>
+  <script type="text/javascript" src="js/reader.js"></script>
+  <script type="text/javascript" src="js/drawer.js"></script>
+  <script type="text/javascript" src="js/projector.js"></script>
+  <script type="text/javascript" src="js/cluster.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+
+  <script>
+      $("#share").jsSocials({
+        showLabel: false,
+        showCount: false,
+        url: "http://josauder.github.io/dreambank_visualized",
+        text: "DreamBank Visualized | An interactive visualization of over 26,000 dream transcriptions",
+        shares: ["facebook", "twitter", "googleplus", "linkedin"]
+      });
+  </script>
+</body>
+</html>
