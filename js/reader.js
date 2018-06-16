@@ -21,6 +21,8 @@ reader = {
           y_classifier: +d.y_classifier,
           x_autoencoder: +d.x_autoencoder,
           y_autoencoder: +d.y_autoencoder,
+          x_umap: +d.x_umap,
+          y_umap: +d.y_umap,
           neighbor_0: +d.neighbor_0,
           neighbor_1: +d.neighbor_1,
           neighbor_2: +d.neighbor_2,

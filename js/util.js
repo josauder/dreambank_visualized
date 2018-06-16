@@ -122,6 +122,10 @@ const util = {
         .style("font-size", "24px")
         .style("fill", "white")
         .text("↓ Negative Sentiment")
+  },
+
+  help: () => {
+    alert("Projection Techniques")
   }
 
 }

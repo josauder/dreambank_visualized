@@ -29,6 +29,11 @@ const projector = {
     y: () => (d) => ((d.y_tsne / 3) + 0.5) * h_svg,
   },
 
+  "umap": {
+    x: () => (d) => ((d.x_umap / 3) + 0.5) * w_svg,
+    y: () => (d) => ((d.y_umap / 3) + 0.5) * h_svg,
+  },
+
   "classifier": {
     x: () => (d) => ((d.x_classifier / 3) + 0.5) * w_svg,
     y: () => (d) => ((d.y_classifier / 3) + 0.5) * h_svg,

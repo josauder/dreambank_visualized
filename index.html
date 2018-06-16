@@ -80,12 +80,18 @@
       </ul>
     </div>
     <p class="white">Projection</p>
-    <select id="projectionMode" style="width:120px">
-      <option value="tsne" selected>T-SNE</option>
-      <option value="classifier">Classifier (Gender)</option>
-      <option value="autoencoder">Autoencoder</option>
-      <option value="date_sentiment">Date - Sentiment</option>
-    </select>
+    <div>
+      <!--<div style="float:left">-->
+        <select id="projectionMode" style="width:120px">
+          <option value="tsne" selected>T-SNE</option>
+          <option value="umap">UMAP</option>
+          <option value="classifier">Classifier (Gender)</option>
+          <option value="autoencoder">Autoencoder</option>
+          <option value="date_sentiment">Date - Sentiment</option>
+        </select>
+      <!--</div>-->
+      <!--<p class="white"><a href="javascript:util.help()">(?)</a></p>-->
+    </div>
     <p class="white">Color</p>
     <select id="colorMode" style="width:120px">
      <option value="gender">By Gender</option>
